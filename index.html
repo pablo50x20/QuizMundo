@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QuizMundo</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0d0d0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="QuizMundo" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 1 — INICIO
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-1" class="pantalla activa">
+
+    <div class="p1-contenido">
+
+      <div class="p1-titulo">
+        <span class="p1-quiz">QUIZ</span><span class="p1-mundo">MUNDO</span>
+      </div>
+
+      <button class="btn-iniciar" id="btn-iniciar-juego">INICIAR JUEGO</button>
+
+      <!-- Opciones en Pantalla 1 -->
+      <div class="p1-opciones">
+        <div class="p1-opcion-item">
+          <span class="p1-opcion-label">Música</span>
+          <button class="btn-toggle" id="toggle-musica-p1" data-activo="true">
+            <span class="btn-toggle-track"><span class="btn-toggle-thumb"></span></span>
+            <span class="btn-toggle-label" id="label-musica-p1">ON</span>
+          </button>
+        </div>
+        <div class="p1-opcion-item">
+          <span class="p1-opcion-label">Sonidos</span>
+          <button class="btn-toggle" id="toggle-sonidos-p1" data-activo="true">
+            <span class="btn-toggle-track"><span class="btn-toggle-thumb"></span></span>
+            <span class="btn-toggle-label" id="label-sonidos-p1">ON</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="p1-logo">
+        <div class="p1-logo-placeholder">LOGO COMPAÑÍA</div>
+      </div>
+
+    </div>
+
+    <div class="p1-credito">
+      Música de Fondo: <strong>Good Luck</strong> — <a href="http://www.fiftysounds.com" target="_blank">www.fiftysounds.com</a>
+    </div>
+
+  </div>
+
+
+  <!-- ÍCONOS FLOTANTES (visibles en pantallas 2-7) -->
+  <div class="iconos-flotantes" id="iconos-flotantes">
+    <button class="icono-btn" id="icono-sonido" title="Sonidos">🔔</button>
+    <button class="icono-btn" id="icono-musica" title="Música">🎵</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 2 — MENÚ PRINCIPAL
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-2" class="pantalla">
+
+    <div class="p2-contenido">
+
+      <div class="p2-titulo">
+        <span class="p1-quiz">QUIZ</span><span class="p1-mundo">MUNDO</span>
+      </div>
+
+      <nav class="p2-menu">
+        <button class="btn-menu" id="btn-jugar">JUGAR</button>
+        <button class="btn-menu" id="btn-puntajes">PUNTAJES</button>
+        <button class="btn-menu" id="btn-estadisticas" disabled>ESTADÍSTICAS</button>
+        <button class="btn-menu btn-menu--salir" id="btn-salir-p2">SALIR</button>
+      </nav>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 3 — SELECCIÓN DE MUNDO
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-3" class="pantalla">
+
+    <div class="p3-contenido">
+
+      <h1 class="p3-titulo">Elige el mundo que quieres jugar</h1>
+
+      <div class="p3-mundos">
+        <!-- Fila 1: 2 mundos -->
+        <div class="p3-fila">
+          <button class="btn-mundo" data-mundo="0">
+            <span class="btn-mundo-icono">🌍</span>
+            <span class="btn-mundo-nombre">Geografía</span>
+            <span class="btn-mundo-progreso">0 / 5 etapas</span>
+          </button>
+          <button class="btn-mundo" data-mundo="1">
+            <span class="btn-mundo-icono">📺</span>
+            <span class="btn-mundo-nombre">Series de TV</span>
+            <span class="btn-mundo-progreso">0 / 5 etapas</span>
+          </button>
+        </div>
+        <!-- Fila 2: 2 mundos -->
+        <div class="p3-fila">
+          <button class="btn-mundo" data-mundo="2">
+            <span class="btn-mundo-icono">🎵</span>
+            <span class="btn-mundo-nombre">Música</span>
+            <span class="btn-mundo-progreso">0 / 5 etapas</span>
+          </button>
+          <button class="btn-mundo" data-mundo="3">
+            <span class="btn-mundo-icono">🎬</span>
+            <span class="btn-mundo-nombre">Cine</span>
+            <span class="btn-mundo-progreso">0 / 5 etapas</span>
+          </button>
+        </div>
+        <!-- Fila 3: 1 mundo centrado -->
+        <div class="p3-fila p3-fila--centrada">
+          <button class="btn-mundo" data-mundo="4">
+            <span class="btn-mundo-icono">📚</span>
+            <span class="btn-mundo-nombre">Literatura</span>
+            <span class="btn-mundo-progreso">0 / 5 etapas</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="btn-salir-pantalla" id="btn-salir-p3">SALIR</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 4 — SELECCIÓN DE ETAPA
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-4" class="pantalla">
+
+    <div class="p4-contenido">
+
+      <h1 class="p4-titulo">Mundo de <span id="p4-nombre-mundo"></span></h1>
+
+      <div class="p4-etapas" id="p4-etapas">
+        <!-- se genera dinámicamente -->
+      </div>
+
+      <button class="btn-salir-pantalla" id="btn-salir-p4">SALIR</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 5 — PUNTAJES
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-5" class="pantalla">
+
+    <div class="p5-contenido">
+
+      <h1 class="p5-titulo">Puntajes</h1>
+
+      <div class="p5-mundos" id="p5-mundos">
+        <!-- se genera dinámicamente -->
+      </div>
+
+      <div class="p5-acciones">
+        <button class="btn-salir-pantalla" id="btn-salir-p5">SALIR</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 6 — JUEGO
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-6" class="pantalla">
+
+    <!-- Ventana emergente: Instrucciones -->
+    <div class="modal-overlay" id="modal-instrucciones">
+      <div class="modal">
+        <h2 class="modal-titulo">Instrucciones</h2>
+        <p class="modal-texto" id="modal-instruccion-texto"></p>
+        <button class="btn-modal-ok" id="btn-modal-ok">OK</button>
+      </div>
+    </div>
+
+    <!-- Ventana emergente: Resultado final -->
+    <div class="modal-overlay" id="modal-resultado">
+      <div class="modal">
+        <h2 class="modal-titulo" id="modal-resultado-titulo"></h2>
+        <div class="modal-stats">
+          <div class="modal-stat">
+            <span class="modal-stat-valor" id="modal-correctas">0</span>
+            <span class="modal-stat-label">Correctas</span>
+          </div>
+          <div class="modal-stat">
+            <span class="modal-stat-valor rojo" id="modal-incorrectas">0</span>
+            <span class="modal-stat-label">Incorrectas</span>
+          </div>
+          <div class="modal-stat">
+            <span class="modal-stat-valor dorado" id="modal-puntaje">0</span>
+            <span class="modal-stat-label">Puntaje</span>
+          </div>
+        </div>
+        <div class="modal-acciones">
+          <button class="btn-modal-siguiente" id="btn-siguiente-etapa">SIGUIENTE ETAPA</button>
+          <button class="btn-modal-salir" id="btn-resultado-salir">SALIR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cabecera -->
+    <div class="p6-header">
+      <div class="p6-nivel" id="p6-nivel"></div>
+      <div class="p6-marcador">
+        <span class="p6-marcador-item verde" id="p6-correctas">✔ 0</span>
+        <span class="p6-marcador-item rojo"  id="p6-incorrectas">✘ 0</span>
+        <span class="p6-marcador-item dorado" id="p6-puntaje">0 pts</span>
+      </div>
+      <div class="p6-iconos-audio">
+        <button class="icono-btn" id="icono-sonido-p6" title="Sonidos">🔔</button>
+        <button class="icono-btn" id="icono-musica-p6" title="Música">🎵</button>
+      </div>
+    </div>
+
+    <!-- Temporizador -->
+    <div class="p6-timer-zona">
+      <div class="p6-timer-num" id="p6-timer-num">50</div>
+      <div class="p6-barra-wrap">
+        <div class="p6-barra" id="p6-barra"></div>
+      </div>
+    </div>
+
+    <!-- Concepto -->
+    <div class="p6-concepto-zona">
+      <p class="p6-concepto-label" id="p6-concepto-label"></p>
+      <h2 class="p6-concepto" id="p6-concepto"></h2>
+    </div>
+
+    <!-- Alternativas 2x2 -->
+    <div class="p6-alternativas" id="p6-alternativas"></div>
+
+    <!-- Stop + crédito -->
+    <div class="p6-footer">
+      <button class="btn-stop" id="btn-stop">⏹ STOP</button>
+      <div class="p6-credito">
+        Música de Juego: <strong>African Drums</strong> — <a href="http://www.fiftysounds.com" target="_blank">www.fiftysounds.com</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 7 — OPCIONES
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-7" class="pantalla">
+
+    <div class="p7-contenido">
+
+      <h1 class="p7-titulo">Opciones</h1>
+
+      <div class="p7-opciones">
+
+        <!-- Música -->
+        <div class="p7-opcion">
+          <div class="p7-opcion-info">
+            <span class="p7-opcion-icono">🎵</span>
+            <div>
+              <span class="p7-opcion-nombre">Música</span>
+              <span class="p7-opcion-desc">Música de fondo y durante el juego</span>
+            </div>
+          </div>
+          <button class="btn-toggle" id="toggle-musica" data-activo="true">
+            <span class="btn-toggle-track">
+              <span class="btn-toggle-thumb"></span>
+            </span>
+            <span class="btn-toggle-label" id="label-musica">ON</span>
+          </button>
+        </div>
+
+        <!-- Sonidos -->
+        <div class="p7-opcion">
+          <div class="p7-opcion-info">
+            <span class="p7-opcion-icono">🔔</span>
+            <div>
+              <span class="p7-opcion-nombre">Sonidos</span>
+              <span class="p7-opcion-desc">Efectos al responder y clicks</span>
+            </div>
+          </div>
+          <button class="btn-toggle" id="toggle-sonidos" data-activo="true">
+            <span class="btn-toggle-track">
+              <span class="btn-toggle-thumb"></span>
+            </span>
+            <span class="btn-toggle-label" id="label-sonidos">ON</span>
+          </button>
+        </div>
+
+      </div>
+
+      <button class="btn-salir-pantalla" id="btn-salir-p7">SALIR</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PANTALLA 8 — ESTADÍSTICAS
+  ══════════════════════════════════════════════ -->
+  <div id="pantalla-8" class="pantalla">
+
+    <div class="p8-contenido">
+
+      <h1 class="p8-titulo">Estadísticas</h1>
+      <p class="p8-subtitulo">Puntaje promedio por mundo</p>
+
+      <div class="p8-grafico" id="p8-grafico">
+        <!-- barras generadas dinámicamente -->
+      </div>
+
+      <button class="btn-salir-pantalla" id="btn-salir-p8">SALIR</button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       AUDIO
+  ══════════════════════════════════════════════ -->
+  <audio id="audio-fondo"      src="Audio/musicafondo.mp3"  loop></audio>
+  <audio id="audio-juego"      src="Audio/musicajuego.mp3"  loop></audio>
+  <audio id="audio-click"      src="Audio/click.mp3"></audio>
+  <audio id="audio-correcto"   src="Audio/correcto.mp3"></audio>
+  <audio id="audio-incorrecto" src="Audio/incorrecto.mp3"></audio>
+  <audio id="audio-tiempo"     src="Audio/tiempo.mp3"></audio>
+
+
+  <script src="datos.js"></script>
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(() => console.log('Service Worker registrado'))
+        .catch(err => console.log('Error SW:', err));
+    }
+  </script>
+</body>
+</html>
